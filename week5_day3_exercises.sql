@@ -284,15 +284,15 @@ WHERE country_id = (
 SELECT actor_id, COUNT(*)
 FROM film_actor 
 GROUP BY actor_id 
-HAVING COUNT(*) BETWEEN 23 AND 26;
+HAVING COUNT(*) BETWEEN 24 AND 25;
 -- actor_id (116, 51, 70, 52, etc...)
 
 
 -- Step 2
 SELECT first_name, last_name 
 FROM actor 
-WHERE actor_id IN (116, 51, 70, 52, etc...);
--- Gary Phoenix, Carmen Hunt, Michelle Mcconaughey, Dan Streep, etc...
+WHERE actor_id IN (116, 51, 162, 170, etc...);
+-- Gary Phoenix, Dan Streep, Oprah Kilmer, Mena Hopper, etc...
 
 
 
@@ -302,13 +302,47 @@ WHERE actor_id IN (
 	SELECT actor_id
 	FROM film_actor 
 	GROUP BY actor_id 
-	HAVING COUNT(*) BETWEEN 23 AND 26
+	HAVING COUNT(*) BETWEEN 24 AND 25
 )
 ORDER BY last_name;
 
 
--- Answer: 55 actors appear in 23 - 26 films
--- run subquery to view results
+-- Answer: 33 actors appear in 24 - 25 films
+-- first_name|last_name  |
+-- ----------+-----------+
+-- Debbie    |Akroyd     |
+-- Cuba      |Allen      |
+-- Russell   |Bacall     |
+-- Julia     |Barrymore  |
+-- Michael   |Bening     |
+-- Liza      |Bergman    |
+-- Cuba      |Birch      |
+-- Zero      |Cage       |
+-- Lucille   |Dee        |
+-- Charlize  |Dench      |
+-- Spencer   |Depp       |
+-- Bob       |Fawcett    |
+-- Parker    |Goldberg   |
+-- Mena      |Hopper     |
+-- Jane      |Jackman    |
+-- Oprah     |Kilmer     |
+-- Cary      |Mcconaughey|
+-- Morgan    |Mcdormand  |
+-- Tom       |Mckellen   |
+-- Christian |Neeson     |
+-- Salma     |Nolte      |
+-- Audrey    |Olivier    |
+-- Milla     |Peck       |
+-- Gary      |Phoenix    |
+-- Penelope  |Pinkett    |
+-- Burt      |Posey      |
+-- Ellen     |Presley    |
+-- Jeff      |Silverstone|
+-- Dan       |Streep     |
+-- Cameron   |Streep     |
+-- Joe       |Swank      |
+-- Nick      |Wahlberg   |
+-- Groucho   |Williams   |
 
 
 
