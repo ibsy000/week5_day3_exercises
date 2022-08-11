@@ -183,12 +183,12 @@ ORDER BY COUNT(*) DESC
 LIMIT 1;
 
 
-SELECT title
+SELECT *
 FROM film 
 WHERE film_id = (
 	SELECT film_id
 	FROM film_actor
-	GROUP BY film_id
+	GROUP BY film_id, description
 	ORDER BY COUNT(*) DESC
 	LIMIT 1
 );
@@ -212,7 +212,7 @@ WHERE film_id = (
 SELECT actor_id, COUNT(*)
 FROM film_actor 
 GROUP BY actor_id
-ORDER BY actor_id
+ORDER BY COUNT(*)
 LIMIT 1;
 -- actor_id 1
 
@@ -221,7 +221,7 @@ LIMIT 1;
 -- Step 2
 SELECT first_name, last_name
 FROM actor 
-WHERE actor_id = 1;
+WHERE actor_id = 148;
 
 
 
@@ -230,14 +230,15 @@ FROM actor
 WHERE actor_id = (
 	SELECT actor_id 
 	FROM film_actor
-	ORDER BY actor_id
+	GROUP BY actor_id
+	ORDER BY COUNT(*)
 	LIMIT 1
 );
 
 -- Answer:
 -- first_name|last_name|
 -- ----------+---------+
--- Penelope  |Guiness  |
+-- Emily     |Dee      |
 
 
 
